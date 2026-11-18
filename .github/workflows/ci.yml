@@ -1,0 +1,30 @@
+name: Robo Inspetor
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o codigo
+        uses: actions/checkout@v4
+
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar PyTorch CPU (na nuvem nao tem GPU)
+        run: pip install torch==2.1.1 torchvision==0.16.1 --index-url https://download.pytorch.org/whl/cpu
+
+      - name: Instalar a lista de compras
+        run: |
+          pip install "numpy<2"
+          pip install -r requirements.txt
+          pip install httpx==0.27.2
+
+      - name: Rodar o inspetor
+        run: python test_ci.py
