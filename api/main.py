@@ -24,8 +24,9 @@ preparo = transforms.Compose([
 ])
 
 # 📒 O caderno mora no Vivobook!
-DB = dict(host="192.168.42.122", port=5432, database="blog_db",
-          user="meusistema", password="senha123", sslmode="disable")
+DB = dict(host="100.87.235.13", port=5432, database="blog_db",
+             user="meusistema", password="senha123", sslmode="disable",
+             connect_timeout=3)
 
 def registrar(classe, confianca):
     """Anota no caderno. Se o caderno sumir, o balcão CONTINUA atendendo!"""
