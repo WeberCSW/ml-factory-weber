@@ -1,0 +1,60 @@
+services:
+
+  bancada:
+    image: my-pytorch-env:v3
+    container_name: fabrica-bancada
+    restart: unless-stopped
+    ports:
+      - "8888:8888"
+    volumes:
+      - ${HOME}/ml_data:/home/jovyan/work
+    environment:
+      JUPYTER_TOKEN: fabrica
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  balcao:
+    image: my-pytorch-env:v3
+    container_name: fabrica-balcao
+    restart: unless-stopped
+    working_dir: /home/jovyan/work/api
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ${HOME}/ml_data:/home/jovyan/work
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  tv:
+    image: metabase/metabase
+    container_name: fabrica-tv
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - metabase_data:/metabase.db
+    environment:
+      MB_DB_FILE: /metabase.db/metabase.db
+      JAVA_OPTS: "-Xmx1g"
+
+volumes:
+  metabase_data:
+    external: true
+    name: metabase_data
