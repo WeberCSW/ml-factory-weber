@@ -85,3 +85,12 @@ Esqueceu o -v ~/ml_data:/...
 Sempre rodar com o bind mount de volume
 👤 Autor
 CSW — Projeto de estudo em DevOps + ML (aprendendo visualmente, um passo de cada vez 😄).
+
+---
+
+## 🤖 Status da Fábrica
+
+![CI](https://github.com/WeberCSW/ml-factory-weber/actions/workflows/ci.yml/badge.svg)
+
+O robô inspetor testa o cérebro e o balcão a cada `git push`.
+Verde = fábrica aprovada. Vermelho = algo quebrou.
