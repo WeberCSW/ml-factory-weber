@@ -1,0 +1,18 @@
+# 🧠 O Cérebro (Redes Neurais)
+torch==2.1.1
+torchvision==0.16.1
+
+# 🚪 O Balcão (API Web)
+fastapi==0.104.1
+uvicorn==0.24.0
+python-multipart==0.0.6
+
+# 🗄️ A Memória (Banco de Dados)
+psycopg2-binary==2.9.9
+
+# 🖼️ Ferramentas de Apoio
+Pillow==10.1.0
+matplotlib==3.8.2
+pandas==2.1.4
+requests==2.31.0
+tqdm==4.66.1
