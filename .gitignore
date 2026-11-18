@@ -1,0 +1,96 @@
+# =============================================================
+# 🗂️  1. DADOS & BANCO (o que NÃO pode ir para o GitHub nunca!)
+# =============================================================
+# Metabase / H2 (aparecem nos seus logs!)
+metabase.db
+metabase.db.mv.db
+metabase.db.trace.db
+*.mv.db
+*.trace.db
+*.db
+*.sqlite
+*.sqlite3
+.DATABASECHANGELOG
+
+# Dados do seu volume de ML
+ml_data/
+*.csv
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.duckdb
+*.pkl
+*.joblib
+
+# PostgreSQL (se usar pg_dump no repo)
+*.sql.gz
+dumps/
+
+# =============================================================
+# 🔐 2. SEGREDOS (a senha quebrou o Metabase? não deixa vazar)
+# =============================================================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.jks
+credentials.json
+service-account*.json
+secrets/
+
+# =============================================================
+# 🐍 3. PYTHON / ML
+# =============================================================
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# Jupyter notebooks (só checkpoints; o .ipynb você pode versionar)
+.ipynb_checkpoints/
+
+# Modelos treinados
+*.pt
+*.pth
+*.onnx
+*.safetensors
+runs/
+wandb/
+mlflow.db
+
+# =============================================================
+# 🐳 4. DOCKER / WSL
+# =============================================================
+docker-compose.override.yml
+*.tar
+wsl_logs/
+*.log
+Pasted_Text_*.txt
+
+# =============================================================
+# 🧠 5. IDE / SISTEMA
+# =============================================================
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# =============================================================
+# ✅ EXCEÇÕES (força a entrada de arquivos importantes)
+# =============================================================
+!.gitignore
+!*.env.example
+!notebooks/*.ipynb
